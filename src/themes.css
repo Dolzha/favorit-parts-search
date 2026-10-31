@@ -1,0 +1,115 @@
+/* Фон по умолчанию (стандартный Bootstrap) */
+body { background: #f8f9fa; }
+
+/* Переключатель вариантов */
+.theme-switch {
+  position: fixed; right: 12px; bottom: 12px; z-index: 10;
+  display: flex; gap: 4px; padding: 4px; border-radius: 10px;
+  background: rgba(0, 0, 0, .75); font: 500 12px/1 system-ui, sans-serif;
+}
+.theme-switch a { color: #fff; text-decoration: none; padding: 7px 9px; border-radius: 7px; }
+.theme-switch a.on { background: #fff; color: #000; }
+
+/* ---------- Вариант 1. «Каталог запчастей»: деловой, плотный, как у крупных магазинов ---------- */
+[data-theme="1"] body {
+  --bs-body-font-family: 'Inter', system-ui, sans-serif;
+  --bs-body-font-size: .9rem;
+  --bs-body-bg: #eef1f5;
+  --bs-border-radius: 4px;
+  background: #eef1f5;
+}
+[data-theme="1"] .app { max-width: 1100px !important; padding-top: 0 !important; }
+[data-theme="1"] .app-header {
+  background: #14213d; color: #fff; margin: 0 calc(-1 * var(--bs-gutter-x, .75rem)) 1.5rem;
+  padding: 18px 24px; border-bottom: 4px solid #ff6b00;
+}
+[data-theme="1"] .app-header h1 { font-weight: 700; font-size: 1.3rem; letter-spacing: -.01em; }
+[data-theme="1"] .app-header p { color: #aab4c8 !important; font-size: .85rem; }
+[data-theme="1"] .form-label { text-transform: uppercase; font-size: .72rem; letter-spacing: .06em; color: #5b6476; }
+[data-theme="1"] #number { border: 2px solid #14213d; border-radius: 4px; font-size: 1.05rem; }
+[data-theme="1"] #number:focus { border-color: #ff6b00; box-shadow: 0 0 0 3px rgba(255, 107, 0, .2); }
+[data-theme="1"] h2 { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
+[data-theme="1"] .list-group { --bs-list-group-border-radius: 4px; --bs-list-group-active-bg: #14213d; --bs-list-group-active-border-color: #14213d; }
+[data-theme="1"] .list-group-item { padding: .55rem .9rem; }
+[data-theme="1"] .offers .list-group-item:nth-child(odd):not(.offers-head) { background: #f7f9fb; }
+[data-theme="1"] .offers-head { background: #dfe4ec !important; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: #5b6476; }
+[data-theme="1"] .price { color: #ff6b00; font-size: 1rem; }
+[data-theme="1"] .badge.text-bg-primary { background: #ff6b00 !important; }
+[data-theme="1"] .badge { border-radius: 2px; text-transform: uppercase; font-size: .62rem; letter-spacing: .04em; }
+[data-theme="1"] .btn { border-radius: 4px; }
+[data-theme="1"] .btn-outline-primary { --bs-btn-color: #14213d; --bs-btn-border-color: #14213d; --bs-btn-hover-bg: #14213d; --bs-btn-hover-border-color: #14213d; }
+[data-theme="1"] .form-check-input:checked { background-color: #ff6b00; border-color: #ff6b00; }
+
+/* ---------- Вариант 2. «Тёмный техно»: тёмный фон, моноширинные номера и цены ---------- */
+[data-theme="2"] { color-scheme: dark; }
+[data-theme="2"] body {
+  --bs-body-font-family: 'Manrope', system-ui, sans-serif;
+  --bs-body-bg: #0b0b0d; --bs-body-color: #e8e8ea;
+  --bs-secondary-color: #8a8a93; --bs-border-color: #26262c;
+  --bs-tertiary-bg: #16161a;
+  background: #0b0b0d; color: #e8e8ea;
+}
+[data-theme="2"] .app-header { padding: 28px 0 8px; }
+[data-theme="2"] h1, [data-theme="2"] h2 { color: #fff; }
+[data-theme="2"] .app-header h1 { font-weight: 800; font-size: 2.2rem; letter-spacing: -.03em; }
+[data-theme="2"] .app-header h1::after { content: '.'; color: #d7ff3a; }
+[data-theme="2"] .form-label { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: #d7ff3a; text-transform: uppercase; }
+[data-theme="2"] #number {
+  background: #16161a; color: #fff; border: 1px solid #2c2c33; border-radius: 12px;
+  font-family: 'JetBrains Mono', monospace; letter-spacing: .04em; padding: 16px 18px;
+}
+[data-theme="2"] #number:focus { border-color: #d7ff3a; box-shadow: 0 0 0 3px rgba(215, 255, 58, .15); }
+[data-theme="2"] #number::placeholder { color: #55555d; }
+[data-theme="2"] .list-group {
+  --bs-list-group-bg: #121215; --bs-list-group-color: #e8e8ea; --bs-list-group-border-color: #24242a;
+  --bs-list-group-border-radius: 12px; --bs-list-group-action-hover-bg: #1b1b20; --bs-list-group-action-hover-color: #fff;
+  --bs-list-group-action-color: #e8e8ea;
+  --bs-list-group-active-bg: #d7ff3a; --bs-list-group-active-color: #0b0b0d; --bs-list-group-active-border-color: #d7ff3a;
+}
+[data-theme="2"] .list-group-item { padding: .9rem 1.1rem; }
+[data-theme="2"] .offers-head, [data-theme="2"] .bg-light { background: #16161a !important; color: #8a8a93; }
+[data-theme="2"] .part-meta, [data-theme="2"] .part-num, [data-theme="2"] .stock { font-family: 'JetBrains Mono', monospace; font-size: .8rem; }
+[data-theme="2"] .price { font-family: 'JetBrains Mono', monospace; color: #d7ff3a; }
+[data-theme="2"] .badge.text-bg-primary { background: #d7ff3a !important; color: #0b0b0d !important; }
+[data-theme="2"] .badge.text-bg-secondary { background: #2a2a31 !important; color: #b7b7bf !important; }
+[data-theme="2"] .btn-outline-secondary { --bs-btn-color: #c8c8cf; --bs-btn-border-color: #34343c; --bs-btn-hover-bg: #d7ff3a; --bs-btn-hover-color: #0b0b0d; --bs-btn-hover-border-color: #d7ff3a; border-radius: 8px; }
+[data-theme="2"] .btn-outline-primary { --bs-btn-color: #d7ff3a; --bs-btn-border-color: #d7ff3a; --bs-btn-hover-bg: #d7ff3a; --bs-btn-hover-color: #0b0b0d; border-radius: 12px; }
+[data-theme="2"] .table { --bs-table-bg: transparent; --bs-table-color: #e8e8ea; --bs-table-border-color: #26262c; }
+[data-theme="2"] .form-check-input { background-color: #26262c; border-color: #3a3a42; }
+[data-theme="2"] .form-check-input:checked { background-color: #d7ff3a; border-color: #d7ff3a; }
+[data-theme="2"] .alert-secondary { background: #16161a; color: #b7b7bf; border-color: #26262c; }
+
+/* ---------- Вариант 3. «Светлый просторный»: тёплый фон, крупный поиск, мягкие карточки ---------- */
+[data-theme="3"] body {
+  --bs-body-font-family: 'Golos Text', system-ui, sans-serif;
+  --bs-body-font-size: 1.02rem;
+  --bs-body-bg: #f6f4ef; --bs-body-color: #1d2521;
+  background: #f6f4ef;
+}
+[data-theme="3"] .app { max-width: 880px !important; padding-top: 48px !important; }
+[data-theme="3"] .app-header { text-align: center; margin-bottom: 2rem !important; }
+[data-theme="3"] .app-header h1 { font-weight: 700; font-size: 2.4rem; letter-spacing: -.02em; color: #1f6f5c; }
+[data-theme="3"] .form-label { display: none; }
+[data-theme="3"] #number {
+  background: #fff; border: 0; border-radius: 999px; padding: 20px 28px; font-size: 1.15rem;
+  box-shadow: 0 10px 30px rgba(31, 111, 92, .12);
+}
+[data-theme="3"] #number:focus { box-shadow: 0 0 0 3px rgba(31, 111, 92, .25), 0 10px 30px rgba(31, 111, 92, .12); }
+[data-theme="3"] h2 { font-weight: 600; font-size: 1.15rem; }
+[data-theme="3"] .list-group {
+  --bs-list-group-border-color: transparent; --bs-list-group-border-radius: 18px;
+  --bs-list-group-bg: #fff;
+  --bs-list-group-active-bg: #1f6f5c; --bs-list-group-active-border-color: #1f6f5c;
+  gap: 8px;
+}
+[data-theme="3"] .list-group-item { border-radius: 16px !important; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(29, 37, 33, .05); }
+[data-theme="3"] .offers-head { background: transparent !important; box-shadow: none; color: #7a847f; font-weight: 500 !important; font-size: .85rem; }
+[data-theme="3"] .price { color: #1f6f5c; font-size: 1.1rem; }
+[data-theme="3"] .badge { border-radius: 999px; font-weight: 500; }
+[data-theme="3"] .badge.text-bg-primary { background: #1f6f5c !important; }
+[data-theme="3"] .badge.text-bg-secondary { background: #e6ece9 !important; color: #3f5a51 !important; }
+[data-theme="3"] .btn { border-radius: 999px; }
+[data-theme="3"] .btn-outline-secondary { --bs-btn-border-color: #d5dcd8; --bs-btn-color: #3f5a51; --bs-btn-hover-bg: #1f6f5c; --bs-btn-hover-border-color: #1f6f5c; }
+[data-theme="3"] .btn-outline-primary { --bs-btn-color: #1f6f5c; --bs-btn-border-color: #1f6f5c; --bs-btn-hover-bg: #1f6f5c; --bs-btn-hover-border-color: #1f6f5c; padding: 12px; }
+[data-theme="3"] .form-check-input:checked { background-color: #1f6f5c; border-color: #1f6f5c; }
+[data-theme="3"] .alert { border-radius: 16px; }

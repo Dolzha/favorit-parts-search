@@ -95,8 +95,8 @@ function OffersTable() {
         <Empty text="Нет позиций в наличии. Выключите фильтр, чтобы увидеть все." />
       ) : (
         // Список вместо таблицы: на телефоне строка складывается в карточку
-        <div className="list-group mb-3">
-          <div className="list-group-item bg-light fw-semibold d-none d-md-flex row g-0">
+        <div className="list-group offers mb-3">
+          <div className="list-group-item offers-head bg-light fw-semibold d-none d-md-flex row g-0">
             <div className="col-md-7">Название / Производитель</div>
             <div className="col-md-2 text-end">Цена</div>
             <div className="col-md-1 text-end">Остаток</div>
@@ -106,17 +106,17 @@ function OffersTable() {
               <div className="row g-2 align-items-center">
                 <div className="col-12 col-md-7">
                   <div>{p.name}</div>
-                  <small className="text-secondary">
+                  <small className="text-secondary part-meta">
                     {p.brand} · {p.number}
                     <span className={`badge ms-2 ${p.isAnalogue ? 'text-bg-secondary' : 'text-bg-primary'}`}>
                       {p.isAnalogue ? 'аналог' : 'искомая'}
                     </span>
                   </small>
                 </div>
-                <div className="col-5 col-md-2 text-md-end text-nowrap fw-semibold">
+                <div className="col-5 col-md-2 text-md-end text-nowrap fw-semibold price">
                   {p.minPrice === null ? '' : `${p.warehouses.length > 1 ? 'от ' : ''}${money.format(p.minPrice)}`}
                 </div>
-                <div className="col-3 col-md-1 text-md-end text-nowrap">{p.stock ? `${p.stock} шт.` : 'нет'}</div>
+                <div className="col-3 col-md-1 text-md-end text-nowrap stock">{p.stock ? `${p.stock} шт.` : 'нет'}</div>
                 <div className="col-4 col-md-2 text-end">
                   {p.warehouses.length > 0 && (
                     <button

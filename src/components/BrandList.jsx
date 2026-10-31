@@ -31,7 +31,7 @@ export default function BrandList() {
                 <strong>{good.brand}</strong>
                 <span className="ms-2">{good.name}</span>
               </span>
-              <small className={active ? '' : 'text-secondary'}>{good.number}</small>
+              <small className={`part-num${active ? '' : ' text-secondary'}`}>{good.number}</small>
             </button>
           );
         })}

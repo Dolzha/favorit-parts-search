@@ -18,15 +18,29 @@ async function request(params, signal) {
     if (e.name === 'AbortError') throw e;
     throw new Error('Нет связи с сервером. Проверьте интернет и попробуйте ещё раз.');
   }
-  if (!response.ok) {
+  // Ошибки API приходят полем error: обычно при статусе 200, а превышение лимита со статусом 403
+  const data = await response.json().catch(() => null);
+  if (data?.error) throw new Error(explainError(data.error));
+  if (!response.ok || !data) {
     throw new Error(`Сервер ответил ошибкой ${response.status}. Попробуйте позже.`);
   }
-
-  const data = await response.json();
-  // Ошибки API приходят полем error при статусе 200
-  if (data.error) throw new Error(`Ошибка API: ${data.error}`);
   return Array.isArray(data.goods) ? data.goods : [];
 }
+
+const API_ERRORS = {
+  'Empty key!': 'Не указан ключ покупателя.',
+  'Invalid key client!': 'Неверный ключ покупателя.',
+  'Empty number goods!': 'Не указан номер детали.',
+  'Request quota exceeded!':
+    'Превышен лимит запросов по грузовому ассортименту для этого ключа. Это ограничение поставщика: выберите другого производителя или повторите позже.',
+};
+
+const explainError = (error) =>
+  String(error)
+    .split(/(?<=!)\s*/)
+    .filter(Boolean)
+    .map((e) => API_ERRORS[e.trim()] || `Ошибка API: ${e.trim()}`)
+    .join(' ');
 
 // Этап 1: все производители, у которых есть деталь с таким номером
 export async function fetchBrands(number, signal) {
